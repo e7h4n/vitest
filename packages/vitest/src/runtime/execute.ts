@@ -59,7 +59,7 @@ function listenForErrors(state: () => WorkerGlobalState) {
     const worker = state()
 
     // if error happens during a test
-    if (worker.current?.type === 'test') {
+    if (worker.current) {
       const listeners = process.listeners(event as 'uncaughtException')
       // if there is another listener, assume that it's handled by user code
       // one is Vitest's own listener
